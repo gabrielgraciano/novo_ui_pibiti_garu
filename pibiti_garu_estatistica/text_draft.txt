@@ -1,0 +1,23 @@
+O gráfico de dispersão bivariado é utilizado para observar a correlação entre duas variáveis quantitativas. Por exemplo, 
+se a nuvem de pontos se assemelha a uma reta crescente ou descrescente, há indícios de correlação linear entre as duas variáveis.
+No entanto, vale ressaltar que há outros tipos de correlação, não lineares.
+. Porém, 
+                    em alguns casos pode ser necessária a divisão em intervalos (casos de variável quantitativa contínua). Uma forma 
+                    bem útil de visualização de distribuição e relação de duas variáveis quantitativas é o gráfico de dispersão. Nele, 
+                    temos dois eixos, cada um representando uma variável, e assim colocam-se os pontos para representar cada observação.
+
+
+Também é possível visualizar a relação existente entre uma variável qualitativa e uma variável quantitativa. Isto pode ser feito por meio do cálculo de 
+medidas resumo, e construção de histogramas e boxplots, para a variável quantitativa em cada categoria da qualitativa. Compare cada variável qualitativa com o peso ou altura nos boxplots abaixo:
+
+Também é muito comum visualizar o que acontece com uma variável qualitativa dentro de cada categoria de uma 
+                    variável qualitativa. Uma forma de realizar isso é através de vários boxplots, similares aos vistos anteriormente, mas onde há 
+                    um dele para cada valor da variável qualitativa. Compare cada variável qualitativa com o peso ou altura nos boxplots abaixo:
+
+As frequências relativas, além de nos dar uma noção de como os dados estão distribuídos, pode ser 
+                    uma estimativa para um cálculo de probabilidade. Ou seja, a partir delas podemos criar um modelo 
+                    teórico para calcular a probabilidade de ocorrência de um certo evento de interesse. \n
+                    No geral, essa probabilidade se dá dividindo o número de casos em que o evento é favorável (ocasiões em que ocorre o evento esperado) pelo número total de possibilidades de ocorrência.
+
+Um evento é um subconjunto de realizações de interesse entre todas as possíveis. As frequências relativas nos dão uma noção das ocorrências de um determinado evento em um estudo. Ou seja, elas são estimativas de probabilidade de tais eventos. Essa probabilidade se dá dividindo o número de casos em que o evento esperado ocorre pelo número total de observações.
+

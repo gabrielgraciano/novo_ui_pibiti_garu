@@ -1,0 +1,12 @@
+name: pibiti_garu_estatistica
+title: pibiti_garu_estatistica
+username: gabrielgracianodias
+account: gabrielgracianodias
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 11475080
+bundleId: 8365461
+url: https://gabrielgracianodias.shinyapps.io/pibiti_garu_estatistica/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE
