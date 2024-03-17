@@ -120,7 +120,7 @@ medium_cyan <- '#3db9bf'
                 }
               )
               
-              userDataDialog <- function(failed = FALSE) {
+              'userDataDialog <- function(failed = FALSE) {
                 modalDialog(
                   fileInput("userDataUploader", "Escolha arquivo CSV",
                             multiple = FALSE,
@@ -179,7 +179,7 @@ medium_cyan <- '#3db9bf'
                 print(head(userData$data))
               }
               
-              )
+              )'
               
               observeEvent(input$selecionarDados,
                            showModal(userDataDialog())
@@ -2280,6 +2280,7 @@ medidas resumo, e construção de histogramas e boxplots, para a variável quant
                   tab_header(title = "Score")
               })
               
+            
               
               #printar resultado
               
@@ -2321,8 +2322,8 @@ medidas resumo, e construção de histogramas e boxplots, para a variável quant
               #linkTexts
               
               
-              observeEvent(input$linkTiposVariaveis, { 
-                updateNavbarPage(session, "mainNav", selected = "tabTiposVariaveis")
+              'observeEvent(input$linkTiposVariaveis, { 
+                updateNavbarPage(session, "mainNav", selected = "tipos_variaveis")
               })
               observeEvent(input$linkDistrFreq, { 
                 updateNavbarPage(session, "mainNav", selected = "tabTabFreqs")
@@ -2360,7 +2361,7 @@ medidas resumo, e construção de histogramas e boxplots, para a variável quant
               observeEvent(input$linkTesteCorr, { 
                 updateNavbarPage(session, "mainNav", selected = "tabTesteCorr")
               })
-              
+              '
              
               ###Exercícios - Paralisia Cerebral
               criar_ui_exercicio <- function(numero_exercicio) {
@@ -2735,58 +2736,66 @@ medidas resumo, e construção de histogramas e boxplots, para a variável quant
               })
                 
               
-            output$tabela_ex1 <- render_gt({
+            output$tabela_ex1 <- DT::renderDataTable({
               
               if ( is.null(validar_opcoes_ex())) {
                 exercicio_selecionado <- input$exercicio_pc
                 resposta_esperada <- respostas_esperadas_pc[[paste0("ex", exercicio_selecionado)]]
                 
-                if(exercicio_selecionado == 1){
+                if (exercicio_selecionado == 1) {
                   
-                  plot <- dados_paralisia%>%
+                  plot <- dados_paralisia %>%
                     tbl_summary(
                       missing = 'no',
                       digits = 
                         list(all_continuous() ~ 1,
-                             all_categorical() ~ c(0,2)),
+                             all_categorical() ~ c(0, 2)),
                       statistic = list(all_continuous() ~ "{mean} ({sd})",
-                                       
                                        all_categorical() ~ "{n} ({p}%)")
                     ) %>%
-                    
-                    modify_header(label = '**Variável')%>%
-                    modify_footnote(update = starts_with('stat_') ~ 'Média (desvio-padrão) para variáveis
-                      numéricas; n (%) para variáveis categóricas')
-                  plot <- plot%>%
-                    
-                    as_gt()
+                    modify_header(label = '**Variável') %>%
+                    modify_footnote(update = starts_with('stat_') ~ 'Média (desvio-padrão) para variáveis numéricas; n (%) para variáveis categóricas')
                   
-                  return(plot)
+                  # Converter para formato DT
+                  plot_dt <- datatable(
+                    plot$table_body,
+                    options = list(
+                      dom = 't',
+                      paging = FALSE,
+                      searching = FALSE,
+                      ordering = FALSE
+                    )
+                  )
+                  
+                  return(plot_dt)
                 }
                 
-                if (exercicio_selecionado == 5){
+                if (exercicio_selecionado == 5) {
                   
-                  plot <- dados_paralisia%>%
-                    select(td_liquido, td_pastoso, td_solido, grupo)%>%
+                  plot <- dados_paralisia %>%
+                    select(td_liquido, td_pastoso, td_solido, grupo) %>%
                     tbl_summary(
                       by = 'grupo',
                       missing = 'no',
-                      digits = 
-                        list(all_continuous() ~ 1,
-                             all_categorical() ~ c(0,2)),
-                      statistic = 
-                        list(all_continuous() ~ "{mean} ({sd})",
-                             all_categorical() ~ "{n} ({p})%")
-                    )%>%
-                    
-                    modify_header(label = '**Variável**')%>%
+                      digits = list(all_continuous() ~ 1, all_categorical() ~ c(0, 2)),
+                      statistic = list(all_continuous() ~ "{mean} ({sd})", all_categorical() ~ "{n} ({p})%")
+                    ) %>%
+                    modify_header(label = '**Variável**') %>%
                     modify_footnote(update = starts_with('stat_') ~ 'Média (desvio-padrão) para')
-                  plot <- plot %>%
-                    
-                    as_gt()
                   
-                  return(plot)
-                    
+                  # Mantendo apenas as colunas desejadas
+                  plot_dt <- datatable(
+                    plot$table_body[, c("variable", "label", "stat_0")],
+                    options = list(
+                      dom = 't',
+                      paging = FALSE,
+                      searching = FALSE,
+                      ordering = FALSE
+                    )
+                  )
+                  
+                  return(plot_dt)
+                  
                 }
                 
                 }
@@ -2820,5 +2829,7 @@ medidas resumo, e construção de histogramas e boxplots, para a variável quant
            
             
 
+          
+            
           
             
