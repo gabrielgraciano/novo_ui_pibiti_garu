@@ -6,7 +6,7 @@ dados_paralisia <- read.csv('data/dados_paralisia_clean.csv')
 # Configurar restante das variáveis
 dados_paralisia$sexo <- factor(dados_paralisia$sexo)
 dados_paralisia$grupo <- factor(dados_paralisia$grupo)
-dados_paralisia$idade <- factor(dados_paralisia$idade)
+dados_paralisia$idade <- as.numeric(dados_paralisia$idade)
 dados_paralisia$perda_audit <- factor(dados_paralisia$perda_audit)
 dados_paralisia$dist_comun <- factor(dados_paralisia$dist_comun)
 dados_paralisia$dmo <- factor(dados_paralisia$dmo, ordered = TRUE)
